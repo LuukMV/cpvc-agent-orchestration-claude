@@ -93,6 +93,20 @@ your resume/LinkedIn text above it if you're on the fast path).
 Watch the agent panel populate as teammates spawn. Arrow keys to select one, Enter to watch
 its transcript live.
 
+### Optional: watch it on the dashboard too
+
+Every agent keeps `runs/status.json` updated as it works (see `RULES.md`), and
+`dashboard.html` turns that into a live status board, one card per teammate, showing what
+it's working on right now and how many it's finished. In a second terminal, from the repo
+root:
+
+```bash
+python3 -m http.server 8010
+```
+
+Then open `http://localhost:8010/dashboard.html` (opening the file directly won't work, it
+has to be served). Leave it open in a tab while the pipeline runs.
+
 ## Step 5: read your packets
 
 Once it's done, open `runs/validated.md` to see every listing's verdict and why (SKIP always
