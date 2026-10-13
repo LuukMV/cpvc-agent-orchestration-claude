@@ -17,7 +17,7 @@ same rules, same output, built for a single sequential session instead of spawne
 
 ## What you'll end up with
 
-Six teammates:
+Seven teammates:
 
 - **intake**: builds a first-draft profile from a pasted resume or LinkedIn, so you get
   real results in minutes instead of filling out a form first
@@ -31,10 +31,14 @@ Six teammates:
   traces exactly to your profile or the packet is marked FAILED, not "close enough"
 - **form-filler** (optional, needs browser-control tooling): opens the real application and
   fills it in, stopping before the Submit button
+- **scout** (optional, run any time): point it at one part of the pipeline you want to
+  improve and it researches 5 real, vetted GitHub repos that could help, with pros and
+  cons, and lets you decide. It never installs or wires anything in on its own
 
-They hand off to each other as they go, not in a rigid batch, so validator starts checking
-a listing the moment finder reports it, and fact-checker starts the moment tailor finishes
-one packet rather than waiting for the whole batch.
+The first five hand off to each other as they go, not in a rigid batch, so validator starts
+checking a listing the moment finder reports it, and fact-checker starts the moment tailor
+finishes one packet rather than waiting for the whole batch. Scout runs on its own, whenever
+you ask for it.
 
 ## Prerequisites
 
@@ -145,8 +149,12 @@ You click submit.
 
 ## Going further
 
-- Add a seventh teammate: an outreach agent that finds a real hiring-manager contact and
-  drafts a connection note (draft only, you send it).
+- **Pick one part of the pipeline to upgrade, then scout it.** Open `prompts/scout-prompt.md`,
+  name the aspect you want to improve (better ghost-job detection, more reliable resume
+  parsing, a smarter outreach step, anything), and paste the prompt in. Scout comes back
+  with 5 real, actively-maintained repos, their pros and cons, and how each could plug into
+  this pipeline, written to `runs/scouted/<aspect>.md`. You pick, nothing gets wired in
+  automatically.
 - Rerun `finder` with a different target role in `PROFILE.md` to see it build a fresh batch.
 - Package this as a plugin so the rest of the club can install it in one step instead of
   cloning a repo.
