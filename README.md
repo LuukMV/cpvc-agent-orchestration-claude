@@ -13,7 +13,7 @@ useful, but yours to review before anything goes out.
 
 Using Codex instead? This is the Claude Code version. Head to the
 [Codex version](https://github.com/LuukMV/cpvc-job-pipeline-codex) instead, same pipeline,
-same rules, same output, run one role at a time in a single session.
+same rules, same output, run by a coordinator that spawns Codex subagents in waves.
 
 ## What you'll end up with
 
