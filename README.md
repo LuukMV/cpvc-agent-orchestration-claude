@@ -13,7 +13,7 @@ useful, but yours to review before anything goes out.
 
 Using Codex instead? This is the Claude Code version. Head to the
 [Codex version](https://github.com/LuukMV/cpvc-job-pipeline-codex) instead, same pipeline,
-same rules, same output, built for a single sequential session instead of spawned teammates.
+same rules, same output, run one role at a time in a single session.
 
 ## What you'll end up with
 
@@ -42,8 +42,7 @@ you ask for it.
 
 ## Prerequisites
 
-- Claude Code Desktop, signed in with your CPVC seat
-- Pro plan or higher (agent teams needs it, covered by your seat)
+- Claude Code Desktop, signed in
 - Git
 - For the form-filler step only: Claude in Chrome connected
 
@@ -95,17 +94,20 @@ its transcript live.
 
 ### Optional: watch it on the dashboard too
 
-Every agent keeps `runs/status.json` updated as it works (see `RULES.md`), and
-`dashboard.html` turns that into a live status board, one card per teammate, showing what
-it's working on right now and how many it's finished. In a second terminal, from the repo
-root:
+Every agent writes its own small status file in `runs/status/` as it works (see
+`RULES.md`), and `dashboard.html` turns those into a live status board, one card per
+teammate, showing what it's working on right now and how many it's finished. In a second
+terminal, from the repo root:
 
 ```bash
-python3 -m http.server 8010
+python3 -m http.server 8010 --bind 127.0.0.1
 ```
 
 Then open `http://localhost:8010/dashboard.html` (opening the file directly won't work, it
 has to be served). Leave it open in a tab while the pipeline runs.
+
+Don't drop `--bind 127.0.0.1`. Without it the server listens on every network you're on,
+and anyone on the same wifi could open your `PROFILE.md` and packets from their laptop.
 
 ## Step 5: read your packets
 
@@ -157,6 +159,11 @@ You click submit.
 - **A filled-out form disappeared**: almost always a tab got reused instead of opened fresh.
   `RULES.md` and `form-filler.md` both call this out, it's a real failure mode, not a
   hypothetical.
+- **Dashboard says "Not connected yet"**: you opened `dashboard.html` as a file. Start the
+  server from the repo root (`python3 -m http.server 8010 --bind 127.0.0.1`) and open
+  `http://localhost:8010/dashboard.html`. "Address already in use" means port 8010 is
+  taken, use 8011 in both places. A card stuck on "No update for N min" means that agent
+  stalled, go check on it.
 - **A packet keeps coming back FAILED**: that usually means `PROFILE.md` is too thin (common
   right after the fast path) for the tailor to write specific-enough bullets without
   reaching. Fill in more of the Experience/Projects tables and rerun.
