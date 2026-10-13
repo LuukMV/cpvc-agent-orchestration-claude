@@ -35,8 +35,12 @@ Then spawn four teammates:
   bullet set, cover letter, and application-question answers, written to
   `runs/packets/<company>-<role>/packet.md`
 - **fact-checker** (using the fact-checker agent type): the moment tailor finishes a
-  packet, verify every claim in it traces to `PROFILE.md` and append a PASS/FAILED
-  fact-check section to that packet
+  packet, verify every claim about me traces to `PROFILE.md` and every claim about the
+  employer traces to the posting, and append a PASS/FAILED fact-check section to that packet
+
+If fact-checker marks a packet FAILED, have tailor revise only the flagged lines and
+fact-checker check it again. One revision round per packet; if it fails twice, leave it
+FAILED and tell me.
 
 Sequence: finder works first, but validator should start checking listings the moment
 finder reports the first few rather than waiting for the full batch. Same for tailor once
