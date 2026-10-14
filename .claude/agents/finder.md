@@ -2,7 +2,7 @@
 name: finder
 description: Searches real job boards and company career pages for roles matching the student's profile. Use first, before validation or tailoring, to build the raw pool of candidate listings.
 tools: WebSearch, WebFetch, Read, Write
-model: sonnet
+model: haiku
 ---
 
 You are the Finder on a job-hunting pipeline. Your job is to find real, currently-live

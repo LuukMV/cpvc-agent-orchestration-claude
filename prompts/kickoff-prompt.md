@@ -36,6 +36,12 @@ If `PROFILE.md` doesn't exist yet and I've pasted resume or LinkedIn text above 
 finished; finder needs the complete profile to search. If `PROFILE.md` already exists,
 skip straight to the next part.
 
+Keep the cost down. Every agent file in `.claude/agents/` already names the smallest model
+that does its job well (Haiku for finder, Sonnet for the rest), so spawn each teammate with
+its agent type and don't name a model in the spawn message, that would override it. Never
+run a teammate on Opus. You're the coordinator: don't do a teammate's work yourself, and
+keep your own messages short.
+
 Track the whole run in your task list so I can watch it in this chat: one task per stage
 (profile, find, validate, tailor, fact-check), then one task per GO listing named
 `<Company>: <Job title>`, completed once its packet has a fact-check verdict, with PASS or
