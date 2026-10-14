@@ -6,7 +6,7 @@ Two ways to get `PROFILE.md` in place, pick one:
   text and/or your LinkedIn "About"/experience section into your first message to Claude
   Code, right along with the prompt block below. The `intake` teammate will build a first
   draft `PROFILE.md` from it automatically.
-- **Thorough path**: `cp PROFILE_TEMPLATE.md PROFILE.md` and fill it in by hand first, more
+- **Thorough path**: ask your AI to copy `PROFILE_TEMPLATE.md` to `PROFILE.md` and fill it in by hand first, more
   accurate, slower to start.
 
 You can also do the fast path now and refine `PROFILE.md` by hand later, that's the

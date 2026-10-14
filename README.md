@@ -49,18 +49,28 @@ you ask for it.
   Without it, the builder measures the layout using Calibri's exact character widths instead.
 - For the form-filler step only: Claude in Chrome connected
 
-## Step 1: get this repo
+## Step 1: set up a folder, all from the chat
 
-```bash
-git clone https://github.com/LuukMV/cpvc-job-pipeline-claude.git
-cd cpvc-job-pipeline-claude
-```
+You won't need a terminal for any of this, your AI runs every command.
 
-Then install the resume builder's one dependency (once):
+1. Make an empty folder, for example `job-pipeline` on your Desktop, and open it in
+   the Claude app's Code tab (choose a folder, then `job-pipeline`).
+2. Paste this into the chat:
 
-```bash
-npm install --prefix resume-builder
-```
+   ```
+   Set this folder up for the CPVC job pipeline. Run these here, in this empty folder:
+   1. git clone https://github.com/LuukMV/cpvc-job-pipeline-claude.git .
+   2. npm install --prefix resume-builder
+   If git says the folder isn't empty and the only thing in it is a hidden .DS_Store file,
+   delete just that file and try again. If anything else is in the folder, stop and ask me.
+   If git or Node.js isn't installed, stop and tell me how to install it on my computer.
+   When both steps work, tell me it's ready.
+   ```
+
+3. **Start a new chat in the same folder** and use it for everything after this.
+   Claude Code only loads `.claude/settings.json` (agent teams is already turned on there) and
+   the teammate definitions in `.claude/agents/` when a chat starts, and the setup chat started
+   before those files existed.
 
 ## Step 2: get a profile in place (two ways)
 
@@ -73,11 +83,8 @@ Add two lines too, with whatever is true for you: `Work authorization: U.S. citi
 sponsorship needed` and `Currently enrolled: yes`. Resumes almost never say either, and
 without them nearly every packet comes back asking you to confirm them.
 
-**Thorough path, more accurate, slower to start.**
-```bash
-cp PROFILE_TEMPLATE.md PROFILE.md
-```
-Open `PROFILE.md` and fill in your real info: contact details, what you're looking for,
+**Thorough path, more accurate, slower to start.** Ask your AI: "Copy
+PROFILE_TEMPLATE.md to PROFILE.md and open it so I can fill it in." Then fill in your real info: contact details, what you're looking for,
 education, and real experience with real numbers.
 
 Either way, `PROFILE.md` is gitignored, it never gets committed, and every agent in this
@@ -89,38 +96,31 @@ Also skim `RULES.md`. It's short, and it's the whole reason this is safe to poin
 job search: never fabricate a fact, verify every claim before it's considered done, never
 submit anything for you, never check a consent box on your behalf.
 
-## Step 3: open it in Claude Code Desktop
-
-Open the folder as your project. Claude Code reads `.claude/settings.json` (agent teams is
-already turned on) and `.claude/agents/` (the teammate definitions) automatically.
-
-Worth actually reading `.claude/agents/fact-checker.md` before you run anything. It's a
-plain markdown file with a little YAML on top, that's the entire mechanism.
-
-## Step 4: run the kickoff prompt
-
-Open `prompts/kickoff-prompt.md`, copy the prompt block, paste it into Claude Code (with
-your resume/LinkedIn text above it if you're on the fast path).
-
-Watch the agent panel populate as teammates spawn. Arrow keys to select one, Enter to watch
-its transcript live.
-
-### Optional: watch it on the dashboard too
+## Step 3 (optional): open the live dashboard first
 
 Every agent writes its own small status file in `runs/status/` as it works (see
 `RULES.md`), and `dashboard.html` turns those into a live status board, one card per
-teammate, showing what it's working on right now and how many it's finished. In a second
-terminal, from the repo root:
+teammate, showing what it's working on right now and how many it's finished. Start it before the run, so the board is up when the first agent starts. Ask your AI:
 
-```bash
+```
+Start the pipeline dashboard in the background. From this folder, run:
 python3 -m http.server 8010 --bind 127.0.0.1
+Keep the --bind 127.0.0.1 part exactly as written. Then give me the link to dashboard.html.
 ```
 
-Then open `http://localhost:8010/dashboard.html` (opening the file directly won't work, it
-has to be served). Leave it open in a tab while the pipeline runs.
+Open the link (`http://localhost:8010/dashboard.html`) and leave the tab open while the
+pipeline runs.
 
 Don't drop `--bind 127.0.0.1`. Without it the server listens on every network you're on,
 and anyone on the same wifi could open your `PROFILE.md` and packets from their laptop.
+
+## Step 4: run the kickoff prompt
+
+In your fresh chat, send one message: your resume or LinkedIn text and the two extra lines
+(fast path only), then the prompt block from `prompts/kickoff-prompt.md`.
+
+Watch the agent panel populate as teammates spawn. Arrow keys to select one, Enter to watch
+its transcript live.
 
 ## Step 5: read your packets
 
