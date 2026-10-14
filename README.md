@@ -1,8 +1,12 @@
-# CPVC Job Pipeline (Claude Code)
+# CPVC Agent Orchestration Workshop (Claude Code)
 
-AI teammates turn your resume into a profile, find real job listings, check them for ghost
-postings, tailor a resume and cover letter to each one, fact-check every claim, and
-(optionally) pre-fill the real application form, stopping before Submit.
+A hands-on multi-agent orchestration project built for the Cal Poly Vibe Coding Club: a
+team of specialized Claude Code teammates, coordinating through file handoffs and running
+in parallel, with a fact-checker gate that can fail their output. The applied example is a
+real job-application pipeline: teammates turn your resume into a profile, find real job
+listings, check them for ghost postings, tailor a resume and cover letter to each one,
+fact-check every claim, and (optionally) pre-fill the real application form, stopping
+before Submit.
 
 Using Codex? Use the [Codex version](https://github.com/LuukMV/cpvc-job-pipeline-codex) instead.
 
