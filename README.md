@@ -71,6 +71,9 @@ You won't need a terminal for any of this, your AI runs every command.
    Claude Code only loads `.claude/settings.json` (agent teams is already turned on there) and
    the teammate definitions in `.claude/agents/` when a chat starts, and the setup chat started
    before those files existed.
+   Then choose **Sonnet** for that chat (model picker, or type `/model sonnet`). The chat is
+   the lead and only coordinates, so it doesn't need Opus, and the teammates already pick
+   their own smaller models.
 
 ## Step 2: get a profile in place (two ways)
 
