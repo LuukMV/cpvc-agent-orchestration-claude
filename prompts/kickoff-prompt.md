@@ -57,7 +57,8 @@ Sequence: finder works first, but validator should start checking listings the m
 finder reports the first few rather than waiting for the full batch. Same for tailor once
 validator marks something GO, and same for fact-checker the moment tailor finishes any one
 packet, don't wait for full batches between steps, let the handoffs overlap. Once all four
-are done, summarize back to me: how many found, how many GO, how many packets passed
+are done, run `node scripts/applications.js` so `runs/APPLICATIONS.md` lists every packet
+with its final fact-check result, then summarize back to me: how many found, how many GO, how many packets passed
 fact-check outright, and name any that failed.
 
 ---
