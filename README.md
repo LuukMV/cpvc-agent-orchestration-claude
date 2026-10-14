@@ -8,7 +8,7 @@ listings, check them for ghost postings, tailor a resume and cover letter to eac
 fact-check every claim, and (optionally) pre-fill the real application form, stopping
 before Submit.
 
-Using Codex? Use the [Codex version](https://github.com/LuukMV/cpvc-job-pipeline-codex) instead.
+Using Codex? Use the [Codex version](https://github.com/LuukMV/cpvc-agent-orchestration-codex) instead.
 
 ## Teammates
 
@@ -35,7 +35,7 @@ Using Codex? Use the [Codex version](https://github.com/LuukMV/cpvc-job-pipeline
 
    ```
    Set this folder up for the CPVC job pipeline. Run these here, in this empty folder:
-   1. git clone https://github.com/LuukMV/cpvc-job-pipeline-claude.git .
+   1. git clone https://github.com/LuukMV/cpvc-agent-orchestration-claude.git .
    2. npm install --prefix resume-builder
    If git says the folder isn't empty and the only thing in it is a hidden .DS_Store file,
    delete just that file and try again. If anything else is in the folder, stop and ask me.
