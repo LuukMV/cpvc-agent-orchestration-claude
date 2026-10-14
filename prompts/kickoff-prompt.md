@@ -36,6 +36,12 @@ If `PROFILE.md` doesn't exist yet and I've pasted resume or LinkedIn text above 
 finished; finder needs the complete profile to search. If `PROFILE.md` already exists,
 skip straight to the next part.
 
+Track the whole run in your task list so I can watch it in this chat: one task per stage
+(profile, find, validate, tailor, fact-check), then one task per GO listing named
+`<Company>: <Job title>`, completed once its packet has a fact-check verdict, with PASS or
+FAILED in the task. Update it every time a teammate reports back, and never complete a task
+before its files are written.
+
 Then spawn four teammates:
 
 - **finder** (using the finder agent type): search real job boards and company sites for

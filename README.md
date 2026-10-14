@@ -75,7 +75,7 @@ You won't need a terminal for any of this, your AI runs every command.
 ## Step 2: get a profile in place (two ways)
 
 **Fast path, see results in minutes.** Don't fill anything in by hand. When you paste the
-kickoff prompt in Step 4, paste your resume text and/or your LinkedIn "About"/experience
+kickoff prompt in Step 3, paste your resume text and/or your LinkedIn "About"/experience
 section right above it. The `intake` teammate builds a first-draft `PROFILE.md` from it
 automatically, everything it's not sure about gets flagged rather than guessed.
 
@@ -96,33 +96,16 @@ Also skim `RULES.md`. It's short, and it's the whole reason this is safe to poin
 job search: never fabricate a fact, verify every claim before it's considered done, never
 submit anything for you, never check a consent box on your behalf.
 
-## Step 3 (optional): open the live dashboard first
-
-Every agent writes its own small status file in `runs/status/` as it works (see
-`RULES.md`), and `dashboard.html` turns those into a live status board, one card per
-teammate, showing what it's working on right now and how many it's finished. Start it before the run, so the board is up when the first agent starts. Ask your AI:
-
-```
-Start the pipeline dashboard in the background. From this folder, run:
-python3 -m http.server 8010 --bind 127.0.0.1
-Keep the --bind 127.0.0.1 part exactly as written. Then give me the link to dashboard.html.
-```
-
-Open the link (`http://localhost:8010/dashboard.html`) and leave the tab open while the
-pipeline runs.
-
-Don't drop `--bind 127.0.0.1`. Without it the server listens on every network you're on,
-and anyone on the same wifi could open your `PROFILE.md` and packets from their laptop.
-
-## Step 4: run the kickoff prompt
+## Step 3: run the kickoff prompt
 
 In your fresh chat, send one message: your resume or LinkedIn text and the two extra lines
 (fast path only), then the prompt block from `prompts/kickoff-prompt.md`.
 
-Watch the agent panel populate as teammates spawn. Arrow keys to select one, Enter to watch
-its transcript live.
+Watch it right in the chat: the lead keeps a task list with one task per stage and one per
+job, checking each off with its fact-check result as teammates report back. The agent panel
+shows each teammate; select one to watch its transcript live.
 
-## Step 5: read your packets
+## Step 4: read your packets
 
 Everything the pipeline writes lands in `runs/`:
 
@@ -136,13 +119,11 @@ runs/
       packet.md               bullets, cover letter, answers, fact-check verdict
       resume.json             the resume's content, every line from PROFILE.md
       resume.docx             the one-page tailored resume, ready for Word or Google Docs
-  status/                     what the dashboard reads
 ```
 
 Open `runs/APPLICATIONS.md` first. It lists every job with its company, job title, location,
 pay, fact-check result and how many questions you still need to answer, plus links to its
-`resume.docx`, `packet.md` and the posting. Passing packets sort to the top. The dashboard
-shows the same table live while the pipeline runs. If the list ever looks out of date, ask
+`resume.docx`, `packet.md` and the posting. Passing packets sort to the top. If the list ever looks out of date, ask
 your AI to run `node scripts/applications.js`.
 
 Then open `runs/validated.md` to see every listing's verdict and why (SKIP always
@@ -155,7 +136,7 @@ traced to your profile. FAILED means exactly what it sounds like, don't use that
 The tailored resume is ready to open in Word or Google Docs. Every line on it came from your
 `PROFILE.md`, checked by the fact-checker. The form-filler attaches it for you.
 
-## Step 6 (optional): pre-fill a real application
+## Step 5 (optional): pre-fill a real application
 
 Only do this for a packet whose fact-check says PASS and that you've actually read and want
 to apply to. See `prompts/form-filler-prompt.md` for the exact steps. The form-filler opens
@@ -197,11 +178,6 @@ You click submit.
 - **A filled-out form disappeared**: almost always a tab got reused instead of opened fresh.
   `RULES.md` and `form-filler.md` both call this out, it's a real failure mode, not a
   hypothetical.
-- **Dashboard says "Not connected yet"**: you opened `dashboard.html` as a file. Start the
-  server from the repo root (`python3 -m http.server 8010 --bind 127.0.0.1`) and open
-  `http://localhost:8010/dashboard.html`. "Address already in use" means port 8010 is
-  taken, use 8011 in both places. A card stuck on "No update for N min" means that agent
-  stalled, go check on it.
 - **A packet keeps coming back FAILED**: that usually means `PROFILE.md` is too thin (common
   right after the fast path) for the tailor to write specific-enough bullets without
   reaching. Fill in more of the Experience/Projects tables and rerun.
