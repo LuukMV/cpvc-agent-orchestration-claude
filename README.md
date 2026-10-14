@@ -45,6 +45,8 @@ you ask for it.
 - Claude Code Desktop, signed in
 - Git
 - Node.js 18 or newer (for building the Word resumes)
+- Optional: LibreOffice, so the resume builder can render each resume and count its real pages.
+  Without it, the builder measures the layout using Calibri's exact character widths instead.
 - For the form-filler step only: Claude in Chrome connected
 
 ## Step 1: get this repo
