@@ -12,6 +12,11 @@ Two ways to get `PROFILE.md` in place, pick one:
 You can also do the fast path now and refine `PROFILE.md` by hand later, that's the
 intended flow, not a compromise.
 
+Whichever path you pick, add one line about work authorization, for example
+`Work authorization: U.S. citizen, no sponsorship needed` (write whatever is true for you).
+Resumes almost never say it, and most postings ask, so without it nearly every packet
+comes back with a `[CONFIRM]` question about it.
+
 Copy the block below into Claude Code as-is, pasting your resume/LinkedIn text above it if
 you're on the fast path.
 
