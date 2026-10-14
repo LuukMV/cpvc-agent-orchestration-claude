@@ -32,7 +32,8 @@ to every teammate below.
 
 If `PROFILE.md` doesn't exist yet and I've pasted resume or LinkedIn text above this prompt
 (or told you where a resume file is), spawn the **intake** teammate first to build a draft
-`PROFILE.md` from it, then continue once intake is done. If `PROFILE.md` already exists,
+`PROFILE.md` from it. Don't spawn any other teammate until intake has reported back
+finished; finder needs the complete profile to search. If `PROFILE.md` already exists,
 skip straight to the next part.
 
 Then spawn four teammates:
