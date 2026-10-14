@@ -44,6 +44,7 @@ you ask for it.
 
 - Claude Code Desktop, signed in
 - Git
+- Node.js 18 or newer (for building the Word resumes)
 - For the form-filler step only: Claude in Chrome connected
 
 ## Step 1: get this repo
@@ -51,6 +52,12 @@ you ask for it.
 ```bash
 git clone https://github.com/LuukMV/cpvc-job-pipeline-claude.git
 cd cpvc-job-pipeline-claude
+```
+
+Then install the resume builder's one dependency (once):
+
+```bash
+npm install --prefix resume-builder
 ```
 
 ## Step 2: get a profile in place (two ways)
@@ -118,12 +125,12 @@ and anyone on the same wifi could open your `PROFILE.md` and packets from their 
 Once it's done, open `runs/validated.md` to see every listing's verdict and why (SKIP always
 comes with a real reason, never a silent drop), then open whatever landed in
 `runs/packets/`. Each packet has resume bullets, a cover letter, question answers, a tailored
-one-page `resume.html` (built from `RESUME_TEMPLATE.html`), and a `## Fact-check` section at
-the bottom, scroll straight to that first. PASS means every claim
+one-page `resume.docx` (Word, built from that packet's `resume.json`), and a `## Fact-check`
+section at the bottom, scroll straight to that first. PASS means every claim
 traced to your profile. FAILED means exactly what it sounds like, don't use that packet as-is.
 
-To use the tailored resume, open `resume.html` in a browser, choose Print, then Save as PDF,
-and save it as `resume.pdf` in the same folder. The form-filler attaches that file for you.
+The tailored resume is ready to open in Word or Google Docs. Every line on it came from your
+`PROFILE.md`, checked by the fact-checker. The form-filler attaches it for you.
 
 ## Step 6 (optional): pre-fill a real application
 
