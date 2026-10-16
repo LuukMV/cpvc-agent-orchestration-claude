@@ -34,10 +34,14 @@ Track the run in your task list: one task per stage (profile, find, validate, ta
 fact-check), then one task per GO listing named `<Company>: <Job title>`, completed with
 PASS or FAILED once its packet has a fact-check verdict.
 
+**Before spawning finder, ask me how many listings to look for** (a number like 5 or 10,
+not 15-20), since that's what everything downstream scales with. Wait for my answer, then
+tell finder that exact number instead of its usual default.
+
 Then spawn four teammates:
 
-- **finder**: search job boards and company sites for roles matching my profile, write to
-  `runs/found.md`
+- **finder**: search job boards and company sites for roles matching my profile, stop once
+  it has the number of candidates I gave you, write to `runs/found.md`
 - **validator**: check each candidate for ghost-listing signals and fit, write verdicts to
   `runs/validated.md`
 - **tailor**: for every GO verdict, draft a tailored resume, cover letter, and
